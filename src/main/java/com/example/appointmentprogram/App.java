@@ -27,6 +27,10 @@ public class App extends Application {
         Class.forName("com.mysql.cj.jdbc.Driver");
         Connection connection = DriverManager.getConnection(url, user, password);
         System.out.println("Connected to the database");
+
+        FirstLevelDivision app = new FirstLevelDivision(1, "a",  3);
+        System.out.println(app.getName());
+
         //launch();
     }
 }
