@@ -116,5 +116,4 @@ public class Customer {
      * @return the name of the division where the customer is located
      */
     public String getDivisionName() { return divisionName; }
-
 }
