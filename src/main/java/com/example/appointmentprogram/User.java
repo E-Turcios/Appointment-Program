@@ -45,7 +45,7 @@ public class User {
      * Returns the username of this User object
      * @return the username
      */
-    public String getUserName() { return userName; }
+    public String getUsername() { return userName; }
 
     /**
      * Returns the password of this User object

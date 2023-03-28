@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 public class FetchDB {
     public static ObservableList<Appointment> getAppointmentsFromDatabase() throws SQLException {
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
-        Connection conn = DBAccess.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT APPOINTMENTS.Appointment_ID, APPOINTMENTS.Title, APPOINTMENTS.Description, APPOINTMENTS.Location, APPOINTMENTS.Type, APPOINTMENTS.Start, APPOINTMENTS.End, APPOINTMENTS.Customer_ID, APPOINTMENTS.User_ID, APPOINTMENTS.Contact_ID, CONTACTS.Contact_Name FROM APPOINTMENTS INNER JOIN CONTACTS ON APPOINTMENTS.Contact_ID = CONTACTS.Contact_ID");
+        Connection connection = DBAccess.getConnection();
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT APPOINTMENTS.Appointment_ID, APPOINTMENTS.Title, APPOINTMENTS.Description, APPOINTMENTS.Location, APPOINTMENTS.Type, APPOINTMENTS.Start, APPOINTMENTS.End, APPOINTMENTS.Customer_ID, APPOINTMENTS.User_ID, APPOINTMENTS.Contact_ID, CONTACTS.Contact_Name FROM APPOINTMENTS INNER JOIN CONTACTS ON APPOINTMENTS.Contact_ID = CONTACTS.Contact_ID");
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()){
