@@ -15,7 +15,7 @@ public class ReportByMonth {
      * @param type the type of appointment associated with the report
      * @param typeTotal the total number of appointments of the given type in the given month
      */
-    ReportByMonth(String month, String type, int typeTotal){
+    public ReportByMonth(String month, String type, int typeTotal){
         this.month = month;
         this.type = type;
         this.typeTotal = typeTotal;

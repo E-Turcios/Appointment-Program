@@ -26,6 +26,11 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Optional;
 
+/**
+ * @author Abdoulaye Boundy Djikine
+ * The Main class is the controller for the main view of the appointment program. It handles all user
+ * interactions with the appointment and customer tables, as well as the creation of new appointments and customers.
+ */
 public class Main {
 
     @FXML
@@ -120,6 +125,11 @@ public class Main {
     private static Appointment selectedAppointment;
     private static Customer selectedCustomer;
 
+    /**
+     * Handles the "Add Appointment" button click by displaying the "Add Appointment" view.
+     * @param event the button click event
+     * @throws IOException if the FXML file cannot be loaded
+     */
     @FXML
     void addAppointmentOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/add-appointment.fxml")));
@@ -129,6 +139,11 @@ public class Main {
         stage.show();
     }
 
+    /**
+     * Handles the "Add Customer" button click by displaying the "Add Customer" view.
+     * @param event the button click event
+     * @throws IOException if the FXML file cannot be loaded
+     */
     @FXML
     void addCustomerOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/add-customer.fxml")));
@@ -137,13 +152,21 @@ public class Main {
         stage.setScene(scene);
         stage.show();
     }
-
+    /**
+     * This method retrieves all appointments from the database and sets them in the appointmentTable view when "All Appointments" button is selected.
+     * @param event An ActionEvent object representing the event of the "All Appointments" button being clicked.
+     * @throws SQLException An exception that provides information on a database access error or other errors.
+     */
     @FXML
     void allAppointmentsSelected(ActionEvent event) throws SQLException {
         ObservableList<Appointment> listOfAppointments = FetchDB.getAppointmentsFromDatabase();
         appointmentTable.setItems(listOfAppointments);
     }
-
+    /**
+     * This method retrieves all appointments from the database that are scheduled in the current month and sets them in the appointmentTable view when "Current Month" button is selected.
+     * @param event An ActionEvent object representing the event of the "Current Month" button being clicked.
+     * @throws SQLException An exception that provides information on a database access error or other errors.
+     */
     @FXML
     void currentMonthSelected(ActionEvent event) throws SQLException {
         ObservableList<Appointment> listOfAppointments = FetchDB.getAppointmentsFromDatabase();
@@ -157,6 +180,11 @@ public class Main {
         }
     }
 
+    /**
+     * This method retrieves all appointments from the database that are scheduled in the current week and sets them in the appointmentTable view when "Current Week" button is selected.
+     * @param event An ActionEvent object representing the event of the "Current Week" button being clicked.
+     * @throws SQLException An exception that provides information on a database access error or other errors.
+     */
     @FXML
     void currentWeekSelected(ActionEvent event) throws SQLException {
         ObservableList<Appointment> listOfAppointments = FetchDB.getAppointmentsFromDatabase();
@@ -203,6 +231,12 @@ public class Main {
         }
 
     }
+    /**
+     * Method called when the delete button for the appointment table is clicked.
+     * Deletes the selected appointment from the database and removes it from the table view.
+     * @param event the event that triggered the method call
+     * @throws SQLException if there is an error accessing the database
+     */
     @FXML
     void deleteAppointmentOnClick(ActionEvent event) throws SQLException {
         Appointment select = appointmentTable.getSelectionModel().getSelectedItem();
@@ -230,7 +264,12 @@ public class Main {
         }
 
     }
-
+    /**
+     * Method called when the delete button for the customer table is clicked.
+     * Deletes the selected customer and all their appointments from the database and removes them from the table view.
+     * @param event the event that triggered the method call
+     * @throws SQLException if there is an error accessing the database
+     */
     @FXML
     void deleteCustomerOnClick(ActionEvent event) throws SQLException {
         Customer select = customerTable.getSelectionModel().getSelectedItem();
@@ -268,7 +307,12 @@ public class Main {
             }
         }
     }
-
+    /**
+    * Method called when the logout button is clicked.
+    * Returns the user to the login screen.
+    * @param event the event that triggered the method call
+    * @throws IOException if there is
+    */
     @FXML
     void logoutOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/login.fxml")));
@@ -277,7 +321,11 @@ public class Main {
         stage.setScene(scene);
         stage.show();
     }
-
+    /**
+     * This method navigates to the report page.
+     * @param event The ActionEvent triggered by the user clicking the reports button
+     * @throws IOException If there is an error loading the report page
+     */
     @FXML
     void reportsOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/report.fxml")));
@@ -287,6 +335,11 @@ public class Main {
         stage.show();
     }
 
+    /**
+     * This method sets the selected appointment and navigates to the modify appointment page.
+     * @param event The ActionEvent triggered by the user clicking the update appointment button
+     * @throws IOException If there is an error loading the modify appointment page
+     */
     @FXML
     void updateAppointmentOnClick(ActionEvent event) throws IOException {
         selectedAppointment = appointmentTable.getSelectionModel().getSelectedItem();
@@ -304,6 +357,11 @@ public class Main {
         }
     }
 
+    /**
+     * This method sets the selected customer and navigates to the modify customer page.
+     * @param event The ActionEvent triggered by the user clicking the update customer button
+     * @throws IOException If there is an error loading the modify customer page
+     */
     @FXML
     void updateCustomerOnClick(ActionEvent event) throws IOException {
         selectedCustomer = customerTable.getSelectionModel().getSelectedItem();
@@ -318,15 +376,25 @@ public class Main {
             stage.show();
         }
     }
-
+    /**
+     * Returns the selected appointment object.
+     * @return The selected Appointment object.
+     */
     public static Appointment getSelectedAppointment(){
         return selectedAppointment;
     }
-
+    /**
+     * Returns the selected customer object.
+     * @return The selected Customer object.
+     */
     public static Customer getSelectedCustomer(){
         return selectedCustomer;
     }
 
+    /**
+     * This method displays an error alert message.
+     * @param input The input code that determines the type of alert message to be displayed
+     */
     public void alert(int input){
         Alert alert = new Alert(Alert.AlertType.ERROR);
         switch (input) {
@@ -344,7 +412,10 @@ public class Main {
             }
         }
     }
-
+    /**
+     * This method initializes the appointment table and customer table.
+     * @throws SQLException If there is an error fetching appointments or customers from the database
+     */
     public void initialize() throws SQLException {
         ObservableList<Appointment> listOfAppointments = FetchDB.getAppointmentsFromDatabase();
         ObservableList<Customer> listOfCustomers = FetchDB.getCustomersFromDatabase();

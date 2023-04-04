@@ -13,7 +13,7 @@ public class Report {
      * @param divisionTotal the total number of divisions
      * @param divisionName the name of the division
      */
-    Report(int divisionTotal, String divisionName){
+    public Report(int divisionTotal, String divisionName){
         this.divisionTotal = divisionTotal;
         this.divisionName = divisionName;
     }

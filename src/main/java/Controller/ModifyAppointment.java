@@ -22,51 +22,107 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * @author Abdoulaye Boundy Djikine
+ *The ModifyAppointment class is a controller class for the appointment modification view.
+ *It allows the user to modify the details of an existing appointment, including its ID, title,
+ *description, location, type, start and end times, customer ID, user ID, and contact ID.
+ */
 public class ModifyAppointment {
-
+    /**
+     * Button to cancel modifying an appointment.
+     */
     @FXML
     private Button appointmentCancelButton;
 
+    /**
+     * ComboBox for selecting the contact for an appointment.
+     */
     @FXML
     private ComboBox<String> appointmentContact;
 
+    /**
+     * TextField to input the description of an appointment.
+     */
     @FXML
     private TextField appointmentDescription;
 
+    /**
+     * DatePicker for selecting the end date of an appointment.
+     */
     @FXML
     private DatePicker appointmentEndDate;
 
+    /**
+     * ComboBox for selecting the end time of an appointment.
+     */
     @FXML
     private ComboBox<LocalTime> appointmentEndTime;
 
+    /**
+     * TextField to input the ID of an appointment.
+     */
     @FXML
     private TextField appointmentId;
 
+    /**
+     * TextField to input the location of an appointment.
+     */
     @FXML
     private TextField appointmentLocation;
 
+    /**
+     * Button to save changes made to an appointment.
+     */
     @FXML
     private Button appointmentSaveButton;
 
+    /**
+     * DatePicker for selecting the start date of an appointment.
+     */
     @FXML
     private DatePicker appointmentStartDate;
 
+    /**
+     * ComboBox for selecting the start time of an appointment.
+     */
     @FXML
     private ComboBox<LocalTime> appointmentStartTime;
 
+    /**
+     * TextField to input the title of an appointment.
+     */
     @FXML
     private TextField appointmentTitle;
 
+    /**
+     * TextField to input the type of an appointment.
+     */
     @FXML
     private TextField appointmentType;
 
+    /**
+     * ComboBox for selecting the customer ID associated with an appointment.
+     */
     @FXML
     private ComboBox<Integer> customerId;
 
+    /**
+     * ComboBox for selecting the user ID associated with an appointment.
+     */
     @FXML
     private ComboBox<Integer> userId;
+
+    /**
+     * The appointment to be modified.
+     */
     private static Appointment select;
 
+    /**
+     * Method to handle the cancel button being clicked.
+     * @param event The event associated with the button click.
+     * @throws IOException if there is an error loading the associated FXML file.
+     */
     @FXML
     void cancelOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/add-customer.fxml")));
@@ -75,6 +131,12 @@ public class ModifyAppointment {
         stage.setScene(scene);
         stage.show();
     }
+    /**
+     * Method to handle the save button being clicked.
+     * @param event The event associated with the button click.
+     * @throws SQLException if there is an error with the SQL query.
+     * @throws IOException  if there is an error loading the associated FXML file.
+     */
     @FXML
     void saveOnClick(ActionEvent event) throws SQLException, IOException {
         if(allFieldsFilled()){
@@ -148,6 +210,10 @@ public class ModifyAppointment {
             alert(9);
         }
     }
+    /**
+     * Shows an alert message based on the input integer.
+     * @param input integer that determines which alert message to show
+     */
     public void alert(int input){
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -208,12 +274,22 @@ public class ModifyAppointment {
             }
         }
     }
+    /**
+     * Checks if all required fields are filled out.
+     * @return true if all required fields are filled out, false otherwise
+     */
     public Boolean allFieldsFilled(){
         if(!appointmentTitle.getText().isEmpty() && !appointmentType.getText().isEmpty() && !appointmentDescription.getText().isEmpty() && !appointmentLocation.getText().isEmpty() && appointmentStartDate.getValue() != null && appointmentStartTime.getValue() != null && appointmentEndDate.getValue() != null && appointmentEndTime.getValue() != null && customerId.getValue() != null && userId.getValue() != null && appointmentContact.getValue() != null){
             return true;
         }
         return false;
     }
+    /**
+     * Checks if a new appointment overlaps with an existing appointment.
+     * @return true if there is an overlap, false otherwise
+     * @throws SQLException
+     */
+
     public Boolean appointmentOverlap() throws SQLException {
         ObservableList<Appointment> listOfAppointments = FetchDB.getAppointmentsFromDatabase();
         LocalDateTime startDateTime = LocalDateTime.of(appointmentStartDate.getValue(), appointmentStartTime.getValue());
@@ -225,7 +301,10 @@ public class ModifyAppointment {
         }
         return false;
     }
-
+    /**
+     * Initializes the Modify Appointment form.
+     * @throws SQLException
+     */
     public void initialize() throws SQLException{
         select = Main.getSelectedAppointment();
         ObservableList<Customer> listOfCustomers = FetchDB.getCustomersFromDatabase();

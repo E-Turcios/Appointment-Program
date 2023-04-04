@@ -146,9 +146,7 @@ public class AddCustomer {
             countryNamesList.add(c.getName());
         }
         country.setItems(countryNamesList);
-        /*
-        Lambda expression to handle click event for the save button
-         */
+        //lambda expression
         saveButton.setOnAction(actionEvent -> {
             try {
                 saveOnClick(actionEvent);
