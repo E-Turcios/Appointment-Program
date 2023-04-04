@@ -32,99 +32,168 @@ import java.util.Optional;
  * interactions with the appointment and customer tables, as well as the creation of new appointments and customers.
  */
 public class Main {
-
+    /**
+     * RadioButton representing all appointments in the appointment table
+     */
     @FXML
     private RadioButton allAppointments;
 
+    /**
+     * Button for adding new appointments to the appointment table
+     */
+
     @FXML
     private Button appointmentAdd;
-
+    /**
+     * TableColumn representing the contact associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentContact;
-
+    /**
+     * TableColumn representing the customer ID associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentCustomerId;
-
+    /**
+     * Button for deleting appointments from the appointment table
+     */
     @FXML
     private Button appointmentDelete;
-
+    /**
+     * TableColumn representing the description associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentDescription;
-
+    /**
+     * TableColumn representing the end time associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentEnd;
-
+    /**
+     * TableColumn representing the ID associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentId;
-
+    /**
+     * TableColumn representing the location associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentLocation;
-
+    /**
+     * TableColumn representing the start time associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentStart;
-
+    /**
+     * TableView containing appointments
+     */
     @FXML
     private TableView<Appointment> appointmentTable;
-
+    /**
+     * TableColumn representing the title associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentTitle;
-
+    /**
+     * TableColumn representing the type associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentType;
-
+    /**
+     * Button for updating existing appointments in the appointment table
+     */
     @FXML
     private Button appointmentUpdate;
-
+    /**
+     * TableColumn representing the user ID associated with an appointment in the appointment table
+     */
     @FXML
     private TableColumn<?, ?> appointmentUserId;
-
+    /**
+     * RadioButton representing appointments in the current month in the appointment table
+     */
     @FXML
     private RadioButton currentMonth;
-
+    /**
+     * RadioButton representing appointments in the current week in the appointment table
+     */
     @FXML
     private RadioButton currentWeek;
-
+    /**
+     * Button for adding new customers to the customer table
+     */
     @FXML
     private Button customerAdd;
-
+    /**
+     * TableColumn representing the address associated with a customer in the customer table
+     */
     @FXML
     private TableColumn<?, ?> customerAddress;
-
+    /**
+     * Button for deleting customers from the customer table
+     */
     @FXML
     private Button customerDelete;
 
+    /**
+     * TableColumn representing the division associated with a customer in the customer table
+     */
     @FXML
     private TableColumn<?, ?> customerDivision;
-
+    /**
+     * TableColumn representing the ID associated with a customer in the customer table
+     */
     @FXML
     private TableColumn<?, ?> customerId;
-
+    /**
+     * TableColumn representing the name associated with a customer in the customer table
+     */
     @FXML
     private TableColumn<?, ?> customerName;
-
+    /**
+     * TableColumn representing the phone number associated with a customer in the customer table
+     */
     @FXML
     private TableColumn<?, ?> customerPhone;
+    /**
 
+     TableColumn representing the postal code associated with a customer in the customer table
+     */
     @FXML
     private TableColumn<?, ?> customerPostalCode;
-
+    /**
+     * TableView containing customers
+     */
     @FXML
     private TableView<Customer> customerTable;
-
+    /**
+     * Button for updating existing customers in the customer table
+     */
     @FXML
     private Button customerUpdate;
-
+    /**
+     * Button for logging out of the application
+     */
     @FXML
     private Button logoutButton;
-
+    /**
+     * Button for generating reports
+     */
     @FXML
     private Button reportsButton;
-
+    /**
+     * ToggleGroup for the radio buttons controlling the appointment table view
+     */
     @FXML
     private ToggleGroup toggleGroup;
+    /**
+     * The currently selected appointment in the appointment table
+     */
     private static Appointment selectedAppointment;
+    /**
+     * The currently selected customer in the customer table
+     */
     private static Customer selectedCustomer;
-
     /**
      * Handles the "Add Appointment" button click by displaying the "Add Appointment" view.
      * @param event the button click event

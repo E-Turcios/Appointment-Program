@@ -22,50 +22,102 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Objects;
 
+/**
+ * @author Abdoulaye Boundy Djikine
+ * This class allows users to add a new appointment to the database.
+ */
 public class AddAppointment {
-
+    /**
+     * The cancel button for the appointment form.
+     */
     @FXML
     private Button appointmentCancelButton;
 
+    /**
+     * The combo box for selecting the contact for the appointment.
+     */
     @FXML
     private ComboBox<String> appointmentContact;
 
+    /**
+     * The text field for entering the description of the appointment.
+     */
     @FXML
     private TextField appointmentDescription;
 
+    /**
+     * The date picker for selecting the end date of the appointment.
+     */
     @FXML
     private DatePicker appointmentEndDate;
 
+    /**
+     * The combo box for selecting the end time of the appointment.
+     */
     @FXML
     private ComboBox<LocalTime> appointmentEndTime;
 
+    /**
+     * The text field for entering the ID of the appointment.
+     */
     @FXML
     private TextField appointmentId;
 
+    /**
+     * The text field for entering the location of the appointment.
+     */
     @FXML
     private TextField appointmentLocation;
 
+    /**
+     * The save button for saving the appointment to the database.
+     */
     @FXML
     private Button appointmentSaveButton;
 
+    /**
+     * The date picker for selecting the start date of the appointment.
+     */
     @FXML
     private DatePicker appointmentStartDate;
 
+    /**
+     * The combo box for selecting the start time of the appointment.
+     */
     @FXML
     private ComboBox<LocalTime> appointmentStartTime;
 
+    /**
+     * The text field for entering the title of the appointment.
+     */
     @FXML
     private TextField appointmentTitle;
 
+    /**
+     * The text field for entering the type of the appointment.
+     */
     @FXML
     private TextField appointmentType;
 
+    /**
+     * The combo box for selecting the ID of the customer for the appointment.
+     */
     @FXML
     private ComboBox<Integer> customerId;
 
+    /**
+     * The combo box for selecting the ID of the user for the appointment.
+     */
     @FXML
     private ComboBox<Integer> userId;
 
+    /**
+     * The method that is called when the cancel button is clicked.
+     * It returns the user to the main appointment view.
+     *
+     * @param event The ActionEvent that is generated when the button is clicked.
+     * @throws IOException If the main appointment view cannot be loaded.
+     */
     @FXML
     void cancelOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));
@@ -75,6 +127,14 @@ public class AddAppointment {
         stage.show();
     }
 
+    /**
+     * The method that is called when the save button is clicked.
+     * It saves the appointment to the database if all fields are filled out correctly.
+     * It also performs error checking on the input fields.
+     * @param event The ActionEvent that is generated when the button is clicked.
+     * @throws IOException If the main appointment view cannot be loaded.
+     * @throws SQLException If there is an error inserting the appointment into the database.
+     */
     @FXML
     void saveOnClick(ActionEvent event) throws IOException, SQLException {
 
@@ -152,6 +212,10 @@ public class AddAppointment {
         }
     }
 
+    /**
+     * Checks if all fields in the appointment form are filled out.
+     * @return true if all fields are filled out, false otherwise.
+     */
     public Boolean allFieldsFilled(){
 
         if(!appointmentTitle.getText().isEmpty() && !appointmentType.getText().isEmpty() && !appointmentDescription.getText().isEmpty() && !appointmentLocation.getText().isEmpty() && appointmentStartDate.getValue() != null && appointmentStartTime.getValue() != null && appointmentEndDate.getValue() != null && appointmentEndTime.getValue() != null && customerId.getValue() != null && userId.getValue() != null && appointmentContact.getValue() != null){
@@ -160,6 +224,11 @@ public class AddAppointment {
         return false;
     }
 
+    /**
+     * Checks if the appointment overlaps with any other appointments in the database.
+     * @return true if the appointment overlaps with another appointment, false otherwise.
+     * @throws SQLException If there is an error fetching appointments from the database.
+     */
     public Boolean appointmentOverlap() throws SQLException {
         ObservableList<Appointment> listOfAppointments = FetchDB.getAppointmentsFromDatabase();
         LocalDateTime startDateTime = LocalDateTime.of(appointmentStartDate.getValue(), appointmentStartTime.getValue());
@@ -172,6 +241,10 @@ public class AddAppointment {
         return false;
     }
 
+    /**
+     * Shows an alert message based on the input integer.
+     * @param input integer that determines which alert message to show
+     */
     public void alert(int input){
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
@@ -233,6 +306,11 @@ public class AddAppointment {
         }
     }
 
+    /**
+     * Initializes the appointment scheduling form by fetching data from the database and setting the appropriate
+     * options for the various dropdown menus.
+     * @throws SQLException if there is an error with the database connection or query
+     */
     public void initialize() throws SQLException {
         ObservableList<Customer> listOfCustomers = FetchDB.getCustomersFromDatabase();
         ObservableList<Integer> customerIDList = FXCollections.observableArrayList();

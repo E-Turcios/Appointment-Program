@@ -3,8 +3,19 @@ package com.example.appointmentprogram;
 import javafx.collections.ObservableList;
 import java.sql.SQLException;
 
+/**
+ * @author Abdoulaye Boundy Djikine
+ * This class provides methods for converting between IDs and names for contacts, first level divisions,
+ * and countries.
+ */
 public class IDNameConversions {
 
+    /**
+     * Converts a contact ID to its corresponding name.
+     * @param contactID the ID of the contact to be converted
+     * @return the name of the contact
+     * @throws SQLException if there is an error retrieving the contacts from the database
+     */
     public static String convertContactIDToName(int contactID) throws SQLException {
         String contactName = "";
         ObservableList<Contact> allContacts = FetchDB.getContactsFromDatabase();
@@ -16,6 +27,12 @@ public class IDNameConversions {
         return contactName;
     }
 
+    /**
+     * Converts a contact name to its corresponding ID.
+     * @param contactName the name of the contact to be converted
+     * @return the ID of the contact
+     * @throws SQLException if there is an error retrieving the contacts from the database
+     */
     public static int convertContactNameToID(String contactName) throws SQLException{
         int contactID = 0;
         ObservableList<Contact> allContacts = FetchDB.getContactsFromDatabase();

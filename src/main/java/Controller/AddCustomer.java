@@ -22,36 +22,72 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Objects;
-
+/**
+ * @author Abdoulaye Boundy Djikine
+ * Controller class for adding a customer. Handles user input, database interactions, and scene transitions.
+ */
 public class AddCustomer {
 
+    /**
+     * Represents a text field for entering the customer's address.
+     */
     @FXML
     private TextField address;
 
+    /**
+     * Represents a button for cancelling changes made to the customer's details.
+     */
     @FXML
     private Button cancelButton;
 
+    /**
+     * Represents a combo box for selecting the country where the customer resides.
+     */
     @FXML
     private ComboBox<String> country;
 
+    /**
+     * Represents a text field for entering the ID of the customer.
+     */
     @FXML
     private TextField customerId;
 
+    /**
+     * Represents a combo box for selecting the division or state where the customer resides.
+     */
     @FXML
     private ComboBox<String> division;
 
+    /**
+     * Represents a text field for entering the name of the customer.
+     */
     @FXML
     private TextField name;
 
+    /**
+     * Represents a text field for entering the phone number of the customer.
+     */
     @FXML
     private TextField phoneNumber;
 
+    /**
+     * Represents a text field for entering the postal code of the customer.
+     */
     @FXML
     private TextField postalCode;
 
+    /**
+     * Represents a button for saving changes made to the customer's details.
+     */
     @FXML
     private Button saveButton;
 
+
+    /**
+     * Loads the main scene when the cancel button is clicked.
+     * @param event The event triggered by clicking the cancel button.
+     * @throws IOException If there is an error loading the FXML file for the main scene.
+     */
     @FXML
     void cancelOnClick(ActionEvent event) throws IOException {
         Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));
@@ -61,6 +97,11 @@ public class AddCustomer {
         stage.show();
     }
 
+    /**
+     * Populates the division combo box based on the selected country.
+     * @param event The event triggered by selecting a country.
+     * @throws SQLException If there is an error retrieving data from the database.
+     */
     @FXML
     void loadDivisions(ActionEvent event) throws SQLException {
         int countryId = 0;
@@ -95,6 +136,12 @@ public class AddCustomer {
         }
     }
 
+    /**
+     * Adds a new customer to the database and returns to the main scene when the save button is clicked.
+     * @param event The event triggered by clicking the save button.
+     * @throws SQLException If there is an error interacting with the database.
+     * @throws IOException If there is an error loading the FXML file for the main scene.
+     */
     @FXML
     void saveOnClick(ActionEvent event) throws SQLException, IOException {
         if(allFieldsFilled()){
@@ -133,12 +180,24 @@ public class AddCustomer {
         }
 
     }
+    /**
+     * Checks if all required fields are filled out.
+     * @return true if all required fields are filled out, false otherwise
+     */
     public Boolean allFieldsFilled(){
         if(!name.getText().isEmpty() && !address.getText().isEmpty() && !phoneNumber.getText().isEmpty() && country.getValue() != null && division.getValue() != null && !postalCode.getText().isEmpty()){
             return true;
         }
         return false;
     }
+    /**
+     * Initializes the Add Customer form by loading the list of countries from the database
+     * and populating the country ComboBox with their names. It also sets up the event handlers
+     * for the save and cancel buttons using lambda expressions.
+     * This lambda function assigns the correct function to each button while taking
+     * into account the appropriate exceptions
+     * @throws SQLException if there is an error retrieving the list of countries from the database
+     */
     public void initialize() throws SQLException {
         ObservableList<Country> listOfCountries = FetchDB.getCountriesFromDatabase();
         ObservableList<String> countryNamesList = FXCollections.observableArrayList();
@@ -162,5 +221,4 @@ public class AddCustomer {
             }
         });
     }
-
 }
