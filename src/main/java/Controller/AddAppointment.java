@@ -20,6 +20,7 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Objects;
 
 public class AddAppointment {
 
@@ -67,7 +68,7 @@ public class AddAppointment {
 
     @FXML
     void cancelOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/main.fxml"));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -135,7 +136,7 @@ public class AddAppointment {
             preparedStatement.setInt(14, IDNameConversions.convertContactNameToID(appointmentContact.getValue()));
             preparedStatement.execute();
 
-            Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/main.fxml"));
+            Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);

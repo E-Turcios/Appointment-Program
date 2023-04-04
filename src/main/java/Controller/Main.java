@@ -23,6 +23,7 @@ import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Optional;
 
 public class Main {
@@ -121,7 +122,7 @@ public class Main {
 
     @FXML
     void addAppointmentOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/add-appointment.fxml"));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/add-appointment.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -130,7 +131,7 @@ public class Main {
 
     @FXML
     void addCustomerOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/add-customer.fxml"));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/add-customer.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -202,7 +203,6 @@ public class Main {
         }
 
     }
-
     @FXML
     void deleteAppointmentOnClick(ActionEvent event) throws SQLException {
         Appointment select = appointmentTable.getSelectionModel().getSelectedItem();
@@ -271,7 +271,7 @@ public class Main {
 
     @FXML
     void logoutOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/login.fxml"));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/login.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -280,7 +280,7 @@ public class Main {
 
     @FXML
     void reportsOnClick(ActionEvent event) throws IOException {
-        Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/report.fxml"));
+        Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/report.fxml")));
         Scene scene = new Scene(parent);
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -329,19 +329,19 @@ public class Main {
 
     public void alert(int input){
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        switch(input){
-            case 1:
+        switch (input) {
+            case 1 -> {
                 alert.setTitle("Error");
                 alert.setHeaderText("No Appointment Selected!");
                 alert.setContentText("Please select an appointment");
                 alert.showAndWait();
-                break;
-            case 2:
+            }
+            case 2 -> {
                 alert.setTitle("Error");
                 alert.setHeaderText("No Customer Selected!");
                 alert.setContentText("Please select a customer");
                 alert.showAndWait();
-                break;
+            }
         }
     }
 

@@ -25,6 +25,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.Locale;
 import java.util.MissingResourceException;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Login {
@@ -69,7 +70,7 @@ public class Login {
         FileWriter txtLoggerFile = new FileWriter("login_activity.txt", true);
 
         if(usernameList.contains(usernameText.getText()) && passwordList.contains(passwordText.getText())){
-            Parent parent = FXMLLoader.load(getClass().getResource("../com/example/appointmentprogram/main.fxml"));
+            Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));
             Scene scene = new Scene(parent);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
