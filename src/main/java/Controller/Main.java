@@ -359,9 +359,9 @@ public class Main {
         appointmentUserId.setCellValueFactory(new PropertyValueFactory<>("userId"));
         appointmentCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
         appointmentTable.setItems(listOfAppointments);
-        customerId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        customerId.setCellValueFactory(new PropertyValueFactory<>("customerID"));
         customerAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
-        customerName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        customerName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
         customerPhone.setCellValueFactory(new PropertyValueFactory<>("phone"));
         customerDivision.setCellValueFactory(new PropertyValueFactory<>("divisionName"));
         customerPostalCode.setCellValueFactory(new PropertyValueFactory<>("postalCode"));
