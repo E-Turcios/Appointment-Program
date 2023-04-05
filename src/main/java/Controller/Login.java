@@ -207,7 +207,7 @@ public class Login {
         try{
 //            Locale locale = Locale.getDefault();
 //            Locale.setDefault(locale);
-//            ResourceBundle localLanguage = ResourceBundle.getBundle("Language/language", Locale.getDefault());
+//            ResourceBundle localLanguage = ResourceBundle.getBundle("src/language", Locale.getDefault());
 //            loginLabel.setText(localLanguage.getString("LoginLabel"));
 //            usernameLabel.setText(localLanguage.getString("UsernameLabel"));
 //            passwordLabel.setText(localLanguage.getString("PasswordLabel"));
