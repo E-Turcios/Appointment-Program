@@ -205,15 +205,15 @@ public class Login {
      */
     public void initialize() throws Exception{
         try{
-//            Locale locale = Locale.getDefault();
-//            Locale.setDefault(locale);
-//            ResourceBundle localLanguage = ResourceBundle.getBundle("src/language", Locale.getDefault());
-//            loginLabel.setText(localLanguage.getString("LoginLabel"));
-//            usernameLabel.setText(localLanguage.getString("UsernameLabel"));
-//            passwordLabel.setText(localLanguage.getString("PasswordLabel"));
-//            timeZoneLabel.setText(localLanguage.getString("TimeZoneLabel"));
-//            loginButton.setText(localLanguage.getString("LoginLabel"));
-//            exitButton.setText(localLanguage.getString("ExitButton"));
+            Locale locale = Locale.getDefault();
+            Locale.setDefault(locale);
+            ResourceBundle localLanguage = ResourceBundle.getBundle("language", Locale.getDefault());
+            loginLabel.setText(localLanguage.getString("LoginLabel"));
+            usernameLabel.setText(localLanguage.getString("UsernameLabel"));
+            passwordLabel.setText(localLanguage.getString("PasswordLabel"));
+            timeZoneLabel.setText(localLanguage.getString("TimeZoneLabel"));
+            loginButton.setText(localLanguage.getString("LoginLabel"));
+            exitButton.setText(localLanguage.getString("ExitButton"));
             timeZoneDisplay.setText(String.valueOf(ZoneId.systemDefault()));
         }
         catch(MissingResourceException e){

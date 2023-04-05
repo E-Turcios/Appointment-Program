@@ -5,15 +5,46 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
 
+/**
+ * @author Abdoulaye Boundy Djikine
+ * This class is for establishing connection and  interact with the MySQL database using JDBC.
+ */
 public class DBAccess {
 
+    /**
+     * The URL of the MySQL database.
+     */
     private static final String url = "jdbc:mysql://localhost:3306/AppointmentDB";
+
+    /**
+     * The username to use when connecting to the MySQL database.
+     */
     private static final String user = "root";
+
+    /**
+     * The password to use when connecting to the MySQL database.
+     */
     private static final String password = "Hatouma1!";
+
+    /**
+     * The fully qualified name of the JDBC driver class to use.
+     */
     private static final String driver = "com.mysql.cj.jdbc.Driver";
+
+    /**
+     * The connection to the MySQL database.
+     */
     private static Connection connection = null;
+
+    /**
+     * The prepared statement used for executing SQL statements on the MySQL database.
+     */
     private static PreparedStatement preparedStatement;
 
+    /**
+     * Attempts to start a connection to the MySQL database using the configured URL, username, and password.
+     * @return The connection to the MySQL database.
+     */
     public static Connection startConnection(){
         try {
             Class.forName(driver);
@@ -29,10 +60,17 @@ public class DBAccess {
         return connection;
     }
 
+    /**
+     * Returns the connection to the MySQL database.
+     * @return The connection to the MySQL database.
+     */
     public static Connection getConnection(){
         return connection;
     }
 
+    /**
+     * Closes the connection to the MySQL database.
+     */
     public static void closeConnection(){
         try{
             connection.close();
@@ -43,6 +81,12 @@ public class DBAccess {
         }
     }
 
+    /**
+     * Creates a prepared statement for executing SQL statements on the MySQL database.
+     * @param conn The connection to the MySQL database.
+     * @param sqlStatement The SQL statement to prepare.
+     * @throws SQLException If there is an error creating the prepared statement.
+     */
     public static void setPreparedStatement(Connection conn, String sqlStatement) throws SQLException {
         if(conn != null)
             preparedStatement = conn.prepareStatement(sqlStatement);
@@ -50,6 +94,10 @@ public class DBAccess {
             System.out.println("Prepared Statement Creation Failed");
     }
 
+    /**
+     * Returns the prepared statement used for executing SQL statements on the MySQL database.
+     * @return The prepared statement used for executing SQL statements on the MySQL database.
+     */
     public static PreparedStatement getPreparedStatement(){
         if(preparedStatement != null)
             return preparedStatement;
@@ -58,3 +106,4 @@ public class DBAccess {
         return null;
     }
 }
+
