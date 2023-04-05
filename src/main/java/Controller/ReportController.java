@@ -194,7 +194,7 @@ public class ReportController {
 
         ObservableList <Report> customReport = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
-        String sql1 = "SELECT FIRSTLEVELDIVISIONS.Division, COUNT(*) AS divisionCount FROM CUSTOMERS INNER JOIN FIRSTLEVELDIVISIONS ON CUSTOMERS.Division_ID = FIRSTLEVELDIVISIONS.Division_ID WHERE FIRSTLEVELDIVISIONS.Division_ID = CUSTOMERS.Division_ID GROUP BY FIRSTLEVELDIVISIONS.Division_ID ORDER BY COUNT(*) DESC";
+        String sql1 = "SELECT first_level_divisions.Division, COUNT(*) AS divisionCount FROM customers INNER JOIN first_level_divisions ON customers.Division_ID = first_level_divisions.Division_ID WHERE first_level_divisions.Division_ID = customers.Division_ID GROUP BY first_level_divisions.Division_ID ORDER BY COUNT(*) DESC";
         DBAccess.setPreparedStatement(conn, sql1);
         PreparedStatement preparedStatement = DBAccess.getPreparedStatement();
         ResultSet resultSet = preparedStatement.executeQuery();
@@ -216,9 +216,9 @@ public class ReportController {
         ObservableList<ReportByMonth> reportByMonths = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
         String sql = "SELECT MONTHNAME(Start) AS month, \n" +
-                "APPOINTMENTS.Type, COUNT(APPOINTMENTS.Type) AS typeCount \n" +
-                "FROM APPOINTMENTS \n" +
-                "GROUP BY MONTHNAME(Start), APPOINTMENTS.Type \n" +
+                "appointments.Type, COUNT(appointments.Type) AS typeCount \n" +
+                "FROM appointments \n" +
+                "GROUP BY MONTHNAME(Start), appointments.Type \n" +
                 "ORDER BY month DESC";
         DBAccess.setPreparedStatement(conn, sql);
         PreparedStatement preparedStatement = DBAccess.getPreparedStatement();

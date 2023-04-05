@@ -178,7 +178,7 @@ public class AddAppointment {
             }
 
             Connection conn = DBAccess.getConnection();
-            DBAccess.setPreparedStatement(conn, "INSERT INTO APPOINTMENTS (Appointment_ID, Title, Description, Location, Type, Start, End, Create_Date, Created_By, Last_Update, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            DBAccess.setPreparedStatement(conn, "INSERT INTO appointments (Appointment_ID, Title, Description, Location, Type, Start, End, Create_Date, Created_By, Last_Update, Last_Updated_By, Customer_ID, User_ID, Contact_ID) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             PreparedStatement preparedStatement = DBAccess.getPreparedStatement();
             preparedStatement.setInt(1, appointmentId);
             preparedStatement.setString(2, appointmentTitle.getText());

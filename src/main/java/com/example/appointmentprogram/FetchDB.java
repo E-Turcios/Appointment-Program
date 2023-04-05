@@ -8,7 +8,7 @@ public class FetchDB {
     public static ObservableList<Appointment> getAppointmentsFromDatabase() throws SQLException {
         ObservableList<Appointment> allAppointments = FXCollections.observableArrayList();
         Connection connection = DBAccess.getConnection();
-        PreparedStatement preparedStatement = connection.prepareStatement("SELECT APPOINTMENTS.Appointment_ID, APPOINTMENTS.Title, APPOINTMENTS.Description, APPOINTMENTS.Location, APPOINTMENTS.Type, APPOINTMENTS.Start, APPOINTMENTS.End, APPOINTMENTS.Customer_ID, APPOINTMENTS.User_ID, APPOINTMENTS.Contact_ID, CONTACTS.Contact_Name FROM APPOINTMENTS INNER JOIN CONTACTS ON APPOINTMENTS.Contact_ID = CONTACTS.Contact_ID");
+        PreparedStatement preparedStatement = connection.prepareStatement("SELECT appointments.Appointment_ID, appointments.Title, appointments.Description, appointments.Location, appointments.Type, appointments.Start, appointments.End, appointments.Customer_ID, appointments.User_ID, appointments.Contact_ID, contacts.Contact_Name FROM appointments INNER JOIN contacts ON appointments.Contact_ID = contacts.Contact_ID");
         ResultSet resultSet = preparedStatement.executeQuery();
 
         while(resultSet.next()){
@@ -32,7 +32,7 @@ public class FetchDB {
     public static ObservableList<Contact> getContactsFromDatabase() throws SQLException{
         ObservableList<Contact> allContacts = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM CONTACTS");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM contacts");
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){
             int id = resultSet.getInt("Contact_ID");
@@ -47,7 +47,7 @@ public class FetchDB {
     public static ObservableList<Country> getCountriesFromDatabase() throws SQLException{
         ObservableList<Country> allCountries = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM COUNTRIES");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM countries");
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){
             int id = resultSet.getInt("Country_ID");
@@ -61,7 +61,7 @@ public class FetchDB {
     public static ObservableList<Customer> getCustomersFromDatabase() throws SQLException{
         ObservableList<Customer> allCustomers = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM CUSTOMERS");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM customers");
         ResultSet resultSet = preparedStatement.executeQuery();
         while(resultSet.next()){
             int id = resultSet.getInt("Customer_ID");
@@ -80,7 +80,7 @@ public class FetchDB {
     public static ObservableList<FirstLevelDivision> getDivisionsFromDatabase() throws SQLException{
         ObservableList<FirstLevelDivision> allFirstLevelDivisions = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM FIRSTLEVELDIVISIONS");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM first_level_divisions");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             int id = resultSet.getInt("Division_ID");
@@ -95,7 +95,7 @@ public class FetchDB {
     public static ObservableList<User> getUsersFromDatabase() throws SQLException {
         ObservableList<User> allUsers = FXCollections.observableArrayList();
         Connection conn = DBAccess.getConnection();
-        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM USERS");
+        PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM users");
         ResultSet resultSet = preparedStatement.executeQuery();
         while (resultSet.next()){
             int id = resultSet.getInt("User_ID");

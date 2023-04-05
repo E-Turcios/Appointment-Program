@@ -177,7 +177,7 @@ public class ModifyAppointment {
                 return;
             }
             Connection conn = DBAccess.getConnection();
-            DBAccess.setPreparedStatement(conn, "UPDATE APPOINTMENTS SET Appointment_ID = ?, Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Last_Update = ?, Last_Updated_By = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?");
+            DBAccess.setPreparedStatement(conn, "UPDATE appointments SET Appointment_ID = ?, Title = ?, Description = ?, Location = ?, Type = ?, Start = ?, End = ?, Last_Update = ?, Last_Updated_By = ?, Customer_ID = ?, User_ID = ?, Contact_ID = ? WHERE Appointment_ID = ?");
             PreparedStatement preparedStatement = DBAccess.getPreparedStatement();
             preparedStatement.setInt(1, Integer.parseInt(appointmentId.getText()));
             preparedStatement.setString(2, appointmentTitle.getText());

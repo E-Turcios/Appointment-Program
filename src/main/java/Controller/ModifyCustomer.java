@@ -188,7 +188,7 @@ public class ModifyCustomer {
         }
     }
     /**
-     * Checks if all required fields in the form are filled.
+     * cChecks if all required fields in the form are filled.
      * @return true if all fields are filled, false otherwise.
     */
      public Boolean allFieldsFilled(){

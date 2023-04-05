@@ -147,7 +147,7 @@ public class AddCustomer {
         if(allFieldsFilled()){
             int customerId = (int) (Math.random() *100);
             Connection conn = DBAccess.getConnection();
-            DBAccess.setPreparedStatement(conn, "INSERT INTO CUSTOMERS (Customer_ID, Customer_Name, Address, Phone, Postal_Code, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES (?,?,?,?,?,?,?,?,?,?)");
+            DBAccess.setPreparedStatement(conn, "INSERT INTO customers (Customer_ID, Customer_Name, Address, Phone, Postal_Code, Create_Date, Created_By, Last_Update, Last_Updated_By, Division_ID) VALUES (?,?,?,?,?,?,?,?,?,?)");
             PreparedStatement preparedStatement = DBAccess.getPreparedStatement();
             preparedStatement.setInt(1, customerId);
             preparedStatement.setString(2, name.getText());
