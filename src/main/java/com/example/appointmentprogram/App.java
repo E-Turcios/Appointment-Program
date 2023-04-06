@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.Locale;
 
@@ -19,7 +21,9 @@ public class App extends Application {
         stage.show();
     }
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        Path path = Paths.get("src/main/java/Languages");
         DBAccess.startConnection();
+        System.out.println(path.toAbsolutePath());
         launch();
         DBAccess.closeConnection();
     }

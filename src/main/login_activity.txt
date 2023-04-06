@@ -1,0 +1,12 @@
+The user with username: user1 successfully logged in at 22:09:50 on 2023-04-05
+
+The user with username: user3 failed to login at 22:11:24 on 2023-04-05
+
+The user with username: user3 failed to login at 22:11:29 on 2023-04-05
+
+The user with username: user3 successfully logged in at 22:11:32 on 2023-04-05
+
+The user with username: user2 failed to login at 22:12:03 on 2023-04-05
+
+The user with username: user2 successfully logged in at 22:12:06 on 2023-04-05
+

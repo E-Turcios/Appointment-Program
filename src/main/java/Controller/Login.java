@@ -101,8 +101,8 @@ public class Login {
         listOfUsers.forEach(user -> usernameList.add(user.getUsername()));
         listOfUsers.forEach(user -> passwordList.add(user.getPassword()));
 
-        //ResourceBundle localLanguage = ResourceBundle.getBundle("Language/language", Locale.getDefault());
-        FileWriter txtLoggerFile = new FileWriter("login_activity.txt", true);
+        ResourceBundle language = ResourceBundle.getBundle("language", Locale.getDefault());
+        FileWriter txtLoggerFile = new FileWriter("src/main/login_activity.txt", true);
 
         if(usernameList.contains(usernameText.getText()) && passwordList.contains(passwordText.getText())){
             Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));
@@ -126,13 +126,13 @@ public class Login {
                 alert.showAndWait();
             }
         }
-//        else if (!usernameList.contains(usernameText.getText()) || !passwordList.contains(passwordText.getText()) || usernameText.getText().isEmpty() || passwordText.getText().isEmpty()){
-//            Alert a = new Alert(Alert.AlertType.ERROR);
-//            a.setTitle(language.getString("Error"));
-//            a.setContentText(localLanguage.getString("IncorrectLogin"));
-//            a.showAndWait();
-//            txtLoggerFile.write("The user with username: " + usernameText.getText() + " failed to login at " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_LOCAL_TIME) + " on " + LocalDate.now() + "\n\n");
-//        }
+        else if (!usernameList.contains(usernameText.getText()) || !passwordList.contains(passwordText.getText()) || usernameText.getText().isEmpty() || passwordText.getText().isEmpty()){
+            Alert a = new Alert(Alert.AlertType.ERROR);
+            a.setTitle(language.getString("Error"));
+            a.setContentText(language.getString("IncorrectLogin"));
+            a.showAndWait();
+            txtLoggerFile.write("The user with username: " + usernameText.getText() + " failed to login at " + LocalTime.now().truncatedTo(ChronoUnit.SECONDS).format(DateTimeFormatter.ISO_LOCAL_TIME) + " on " + LocalDate.now() + "\n\n");
+        }
         txtLoggerFile.close();
     }
 
