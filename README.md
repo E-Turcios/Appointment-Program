@@ -7,7 +7,7 @@ The aim of this software is to create a comprehensive graphical user interface (
 # Author Information
 Author: Abdoulaye Boundy Djikine
 
-Contact: a@djikin@wgu.edu
+Contact: adjikin@wgu.edu
 
 Application Version: 1.0
 
