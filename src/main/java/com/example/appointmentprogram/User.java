@@ -1,5 +1,9 @@
 package com.example.appointmentprogram;
 
+/**
+ * @author Abdoulaye Boundy Djikine
+ * Appointment class representing a user object
+ */
 public class User {
     private int userID;
     private String userName;

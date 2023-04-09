@@ -287,7 +287,7 @@ public class ModifyAppointment {
     /**
      * Checks if a new appointment overlaps with an existing appointment.
      * @return true if there is an overlap, false otherwise
-     * @throws SQLException
+     * @throws SQLException if there is an error in accessing the database.
      */
 
     public Boolean appointmentOverlap() throws SQLException {
@@ -303,7 +303,7 @@ public class ModifyAppointment {
     }
     /**
      * Initializes the Modify Appointment form.
-     * @throws SQLException
+     * @throws SQLException if there is a problem with the database connection
      */
     public void initialize() throws SQLException{
         select = Main.getSelectedAppointment();

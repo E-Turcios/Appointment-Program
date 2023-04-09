@@ -11,25 +11,33 @@ import java.sql.PreparedStatement;
  */
 public class DBAccess {
 
-    /**
-     * The URL of the MySQL database.
-     */
-    private static final String url = "jdbc:mysql://localhost:3306/AppointmentDB";
-
-    /**
-     * The username to use when connecting to the MySQL database.
-     */
-    private static final String user = "root";
-
-    /**
-     * The password to use when connecting to the MySQL database.
-     */
-    private static final String password = "Hatouma1!";
-
-    /**
-     * The fully qualified name of the JDBC driver class to use.
-     */
+//    /**
+//     * The URL of the MySQL database.
+//     */
+//    private static final String url = "jdbc:mysql://localhost:3306/AppointmentDB";
+//
+//    /**
+//     * The username to use when connecting to the MySQL database.
+//     */
+//    private static final String user = "root";
+//
+//    /**
+//     * The password to use when connecting to the MySQL database.
+//     */
+//    private static final String password = "Hatouma1!";
+//
+//    /**
+//     * The fully qualified name of the JDBC driver class to use.
+//     */
+//    private static final String driver = "com.mysql.cj.jdbc.Driver";
+    private static final String protocol = "jdbc";
+    private static final String vendor = ":mysql:";
+    private static final String location = "//localhost/";
+    private static final String databaseName = "client_schedule";
+    private static final String jdbcUrl = protocol + vendor + location + databaseName + "?connectionTimeZone = SERVER";
     private static final String driver = "com.mysql.cj.jdbc.Driver";
+    private static final String userName = "sqlUser";
+    private static String password = "Passw0rd!";
 
     /**
      * The connection to the MySQL database.
@@ -48,7 +56,7 @@ public class DBAccess {
     public static Connection startConnection(){
         try {
             Class.forName(driver);
-            connection = DriverManager.getConnection(url, user, password);
+            connection = DriverManager.getConnection(jdbcUrl, userName, password);
             System.out.println("Connection successful!");
         }
         catch(ClassNotFoundException e){

@@ -102,7 +102,7 @@ public class Login {
         listOfUsers.forEach(user -> passwordList.add(user.getPassword()));
 
         ResourceBundle language = ResourceBundle.getBundle("language", Locale.getDefault());
-        FileWriter txtLoggerFile = new FileWriter("src/main/login_activity.txt", true);
+        FileWriter txtLoggerFile = new FileWriter("src/main/resources/login_activity.txt", true);
 
         if(usernameList.contains(usernameText.getText()) && passwordList.contains(passwordText.getText())){
             Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("../com/example/appointmentprogram/main.fxml")));

@@ -44,7 +44,12 @@ public class IDNameConversions {
         return contactID;
     }
 
-
+    /**
+     * Converts a division ID to its corresponding name from the database.
+     * @param divisionID the ID of the division to convert.
+     * @return the name of the division with the specified ID.
+     * @throws SQLException if a SQL exception occurs while accessing the database.
+     */
     public static String convertDivisionIDToName(int divisionID) throws SQLException{
         String divisionName = "";
         ObservableList<FirstLevelDivision> allFirstLevelDivisions = FetchDB.getDivisionsFromDatabase();
@@ -56,6 +61,12 @@ public class IDNameConversions {
         return divisionName;
     }
 
+    /**
+     * Converts a division name to its corresponding ID from the database.
+     * @param divisionName the name of the division to convert.
+     * @return the ID of the division with the specified name.
+     * @throws SQLException if a SQL exception occurs while accessing the database.
+     */
     public static int convertDivisionNameToId(String divisionName) throws SQLException{
         int divisionId = 0;
         ObservableList<FirstLevelDivision> allFirstLevelDivisions = FetchDB.getDivisionsFromDatabase();
@@ -66,6 +77,13 @@ public class IDNameConversions {
         }
         return divisionId;
     }
+
+    /**
+     * Converts a country name to its corresponding ID from the database.
+     * @param countryName the name of the country to convert.
+     * @return the ID of the country with the specified name.
+     * @throws SQLException if a SQL exception occurs while accessing the database.
+     */
     public static int convertCountryNameToID(String countryName) throws SQLException{
         int countryId = 0;
         ObservableList<Country> allCountries = FetchDB.getCountriesFromDatabase();
@@ -76,6 +94,4 @@ public class IDNameConversions {
         }
         return countryId;
     }
-
-
 }
